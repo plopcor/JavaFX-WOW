@@ -44,6 +44,11 @@ public class Partida {
 	public void setPuntuacio(int puntuacio) {
 		this.puntuacio = puntuacio;
 	}
+	
+	public void incrementaPuntuacio(int puntuacio) {
+		if(puntuacio > 0)
+			this.puntuacio += puntuacio;
+	}
 
 	public boolean seguentLocalitzacio() {
 		

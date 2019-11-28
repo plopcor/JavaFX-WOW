@@ -47,30 +47,23 @@ public class ControladorPrincipal {
 	@FXML
 	private TextArea txtNormes;
 
+	
 	// Panell Main => Controls
+	
+	// - Tauler
 	@FXML
 	private GridPane gridParaules;
 	public static final Point gridParaulesMax = new Point(15, 12); // Tamany del grid/tauler
+	
+	// - Lletres
 	@FXML
 	private GridPane gridLletres;
 	@FXML
 	private TextField txtParaula;
 	@FXML
 	private Button btnValidar;
-	@FXML
-	private Button btn1;
-	@FXML
-	private Button btn2;
-	@FXML
-	private Button btn3;
-	@FXML
-	private Button btn4;
-	@FXML
-	private Button btn5;
-	@FXML
-	private Button btn6;
-
-	// Panell Informacio
+	
+	// - Panell Informacio
 	@FXML
 	private Pane panellInfo;
 	@FXML
@@ -81,6 +74,7 @@ public class ControladorPrincipal {
 
 	// Llista amb la posicio de les paraules
 	HashMap<String, ParaulaData> paraules = new HashMap<String, ParaulaData>();
+	
 	// Llista amb les paraules extra
 	Map<String, Boolean> paraulesExtra = new HashMap<String, Boolean>();
 
@@ -99,9 +93,6 @@ public class ControladorPrincipal {
 	// INICIAR JOC
 	@FXML
 	public void clickBtnIniciar(ActionEvent event) {
-
-//		// Començar partida
-//		wow.comencarPartida();
 		
 		// Carregara el nivell actual (primera localitzacio, primer nivell)
 		carregarNivellActual();
@@ -109,13 +100,6 @@ public class ControladorPrincipal {
 		// Mostrar pantalla de joc
 		panellInici.setVisible(false);
 		panellMain.setVisible(true);
-
-//		// TESTING
-//		for (int i = 0; i < 12; i++)
-//			gridParaules.add(new TextField(i + ""), 0, i);
-//
-//		for (int i = 0; i < 15; i++)
-//			gridParaules.add(new TextField(i + ""), i, 0);
 
 	}
 
@@ -143,19 +127,31 @@ public class ControladorPrincipal {
 			btn.setDisable(false);
 	}
 
+	
 	//
 	// EVENTS
 	//
 
 	// Click Boto - Lletra
-	EventHandler<ActionEvent> eventLletraClick=new EventHandler<ActionEvent>(){public void handle(ActionEvent event){Button btn=(Button)event.getSource();txtParaula.setText(txtParaula.getText()+btn.getText());btn.setDisable(true);btnsPressionats.add(btn);}};
+	EventHandler<ActionEvent> eventLletraClick = new EventHandler<ActionEvent>(){
+		public void handle(ActionEvent event){
+			Button btn=(Button)event.getSource();
+			txtParaula.setText(txtParaula.getText() + btn.getText());
+			btn.setDisable(true);
+			btnsPressionats.add(btn);
+			}
+		};
 
+	
 	//
 	// METODES
 	//
 
 	public void resoldreParaula(ParaulaData paraulaData) {
 
+		// Donar punts
+		wow.getPartida().incrementaPuntuacio(10);
+		
 		// Per cada lletra de paraula, mostrala al tauler (Posar lletra al TextView associat)
 		for (Map.Entry<Node, Character> lletra : paraulaData.getLletres().entrySet()) {
 			((TextField) lletra.getKey()).setText(lletra.getValue().toString());
@@ -167,8 +163,13 @@ public class ControladorPrincipal {
 	}
 
 	public void resoldreParaulaExtra(String paraula) {
+		
+		// Donar punts
+		wow.getPartida().incrementaPuntuacio(5);
+		
+		//System.out.println("Paraula extra => " + paraula);
+		
 		// Marcar com a resolta (sobre-escriura el registre del mapa amb el nou valor True ja que utilitza la mateixa clau)
-		System.out.println("Paraula extra => " + paraula);
 		paraulesExtra.put(paraula, true);
 	}
 
