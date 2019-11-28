@@ -1,0 +1,11 @@
+
+#### Posibles afegits:
+- Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
+- Fer que el numNivell sigui definit per la seva posicio dins de la llista de nivells de la Localitzacio que els conté
+- Permetre pulsar tecles mentres es fa focus al input per utilitzarles.
+  @ Buscara si n'hi ha un boto amb aquesta tecla i el clickara (btnLletra.fire())
+  @ Haura de comprovar => Que existeix un boto amb aquesta lletra existeix i ESTA HABILITAT
+- Al pressionar "Enter", clickara al boto de "Validar"
+
+- Al utilitzar "Mostrar pista" agafara una lletra aleatoria del hashmap "taulellLletres".
+  @ Destapar totes les caselles que continguin aquesta lletra ??? => Haura de recorrer el mapa i destapar on el valor (Character) sigui igual al seleccioat
