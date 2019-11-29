@@ -1,21 +1,34 @@
+
+#### Afegit:
+- Remenar lletres disponibles
+- Puntuacio
+- Generacio automatica dels botons per a les lletres
+- Generacio automatica del tauler donada una llista de paraules
+- Poder tenir una llista de localitzacions, cadascuna amb una llista de nivells
+
+
+#### Millorar:
+- Pantalla d'inici
+- Pantalla de "Fi del joc"
+
 #### Per afegir:
+- Avisar dels errors/encerts
+- Guardar i carregar partida (Serialitzacio)
 - Veure llista de paraules extra encertades
 - Carregar nivells desde JSON
-- Imatges de fons
-=>
+- Imatges de fons segons la localitzacio
+  Codi =>
 		// Crear fons (carregar imatge)
 		//BackgroundImage bgImg = new BackgroundImage(new Image(new File("src/dog_2.jpg").toURI().toString(), panellMain.getWidth(), panellMain.getHeight(), false,true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
 		// Assignar fons
 		//panellMain.setBackground(new Background(bgImg));
 
+
 #### Posibles afegits:
 - Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
 - Fer que el numNivell sigui definit per la seva posicio dins de la llista de nivells de la Localitzacio que els conté
-- Permetre pulsar tecles mentres es fa focus al input per utilitzarles.
+- Permetre pulsar tecles mentres es fa focus al input per utilitzarles (en comptes d'anar clicant els botons).
   @ Buscara si n'hi ha un boto amb aquesta tecla i el clickara (btnLletra.fire())
-  @ Haura de comprovar => Que existeix un boto amb aquesta lletra existeix i ESTA HABILITAT
-- Al pressionar "Enter", clickara al boto de "Validar"
-
-- Al utilitzar "Mostrar pista" agafara una lletra aleatoria del hashmap "taulellLletres".
-  @ Destapar totes les caselles que continguin aquesta lletra ??? => Haura de recorrer el mapa i destapar on el valor (Character) sigui igual al seleccioat
+  @ Haura de comprovar que existeix un boto amb aquesta lletra i a més ESTA HABILITAT
+- Al pressionar "Enter", clicara al boto de "Validar"
