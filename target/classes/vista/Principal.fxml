@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane prefHeight="665.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorPrincipal">
@@ -21,7 +20,7 @@
       </Pane>
       <AnchorPane fx:id="panellMain" layoutX="1.0" prefHeight="665.0" prefWidth="558.0">
          <children>
-            <GridPane fx:id="gridLletres" layoutX="66.0" layoutY="341.0" prefHeight="178.0" prefWidth="342.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="65.0">
+            <GridPane fx:id="gridLletres" layoutX="76.0" layoutY="443.0" prefHeight="178.0" prefWidth="405.0" AnchorPane.bottomAnchor="43.60000000000002" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,39 +31,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <Button fx:id="btn1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="A">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="A" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="A" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="A" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="A" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="A" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-               </children>
             </GridPane>
             <GridPane fx:id="gridParaules" layoutX="35.0" layoutY="29.0" prefHeight="266.0" prefWidth="402.0" AnchorPane.bottomAnchor="270.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="29.0">
               <columnConstraints>
@@ -101,7 +67,7 @@
             </GridPane>
             <Pane fx:id="panellInfo" layoutX="-1.0" layoutY="299.0" prefHeight="32.0" prefWidth="473.0" AnchorPane.bottomAnchor="234.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.39999999999997726">
                <children>
-                  <Text fx:id="lblNivell" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nivell: " />
+                  <Text fx:id="lblPunts" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punts:" />
                   <TextField fx:id="txtParaula" editable="false" layoutX="184.0" layoutY="2.0" prefHeight="25.0" prefWidth="191.0" />
                   <Button fx:id="btnValidar" layoutX="472.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnValidarClick" text="Validar" />
                </children>

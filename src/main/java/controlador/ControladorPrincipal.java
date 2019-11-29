@@ -66,7 +66,7 @@ public class ControladorPrincipal {
 	@FXML
 	private Pane panellInfo;
 	@FXML
-	private Text lblPuntuacio;
+	private Text lblPunts;
 
 	// Llista dels botons pressionats (i deshabilitats, per tornar a habilitar)
 	ArrayList<Button> btnsPressionats = new ArrayList<Button>();
@@ -143,6 +143,7 @@ public class ControladorPrincipal {
 
 		
 		
+		
 	//
 	// METODES
 	//
@@ -182,11 +183,7 @@ public class ControladorPrincipal {
 	}
 
 	public void actualitzaPuntuacio() {
-
-		if(this.lblPuntuacio == null)
-			System.out.println("NULL");
-		else
-			lblPuntuacio.setText("Punts: " + wow.getPartida().getPuntuacio());
+		lblPunts.setText("Punts: " + wow.getPartida().getPuntuacio());
 	}
 	
 	public void carregarNivellActual() {

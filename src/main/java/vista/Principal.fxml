@@ -67,7 +67,7 @@
             </GridPane>
             <Pane fx:id="panellInfo" layoutX="-1.0" layoutY="299.0" prefHeight="32.0" prefWidth="473.0" AnchorPane.bottomAnchor="234.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.39999999999997726">
                <children>
-                  <Text fx:id="lblPuntuacio" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punts:" />
+                  <Text fx:id="lblPunts" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punts:" />
                   <TextField fx:id="txtParaula" editable="false" layoutX="184.0" layoutY="2.0" prefHeight="25.0" prefWidth="191.0" />
                   <Button fx:id="btnValidar" layoutX="472.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnValidarClick" text="Validar" />
                </children>
