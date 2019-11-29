@@ -15,6 +15,7 @@
 - Avisar dels errors/encerts
 - Guardar i carregar partida (Serialitzacio)
 - Veure llista de paraules extra encertades
+- Crear classe amb funcions per treballar amb els fitxers (Text pla, JSON i binari)
 - Carregar nivells desde JSON
 - Imatges de fons segons la localitzacio
   Codi =>

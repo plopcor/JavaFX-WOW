@@ -1,0 +1,23 @@
+
+WOW
+- Partida
+
+Partida
+- Puntuacio
+- Llista de localitzacions
+
+Localitzacio
+- Nom
+- Imatge
+- Llista de nivells
+
+Nivell
+- NumNivell
+- Completat
+- Lletres
+- Paraules
+- ParaulesExtra
+
+---- Altres ----
+ParaulaData (Class) => Emmagatzema les dades d'una paraula (Totes les lletres i els seus nodes/recuadres del tauler, a més de si esta resolta)
+Direccio 	(Enumerable) => Permet indicar la direccio de la paraula, utilitzat al generar el tauler
