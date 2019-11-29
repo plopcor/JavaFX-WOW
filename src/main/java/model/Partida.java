@@ -45,7 +45,7 @@ public class Partida {
 		this.puntuacio = puntuacio;
 	}
 	
-	public void incrementaPuntuacio(int puntuacio) {
+	public void incrementarPuntuacio(int puntuacio) {
 		if(puntuacio > 0)
 			this.puntuacio += puntuacio;
 	}

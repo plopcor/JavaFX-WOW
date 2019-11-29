@@ -7,7 +7,6 @@ import model.ParaulaData;
 import model.WOW;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 
@@ -23,12 +22,8 @@ import java.util.Map;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class ControladorPrincipal {
@@ -146,6 +141,8 @@ public class ControladorPrincipal {
 			}
 		};
 
+		
+		
 	//
 	// METODES
 	//
@@ -153,7 +150,7 @@ public class ControladorPrincipal {
 	public void resoldreParaula(ParaulaData paraulaData) {
 
 		// Donar punts
-		wow.getPartida().incrementaPuntuacio(10);
+		wow.getPartida().incrementarPuntuacio(10);
 		
 		// Actualitzar punts
 		actualitzaPuntuacio();
@@ -162,12 +159,7 @@ public class ControladorPrincipal {
 		for (Map.Entry<Node, Character> lletra : paraulaData.getLletres().entrySet()) {
 			TextField tf = (TextField) lletra.getKey();
 			tf.setText(lletra.getValue().toString());
-			//tf.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 			tf.setStyle("-fx-control-inner-background: lightgreen");
-//	        text1.setFont(Font.font(java.awt.Font.SERIF, 25));
-			
-			
-			((TextField) lletra.getKey()).setText(lletra.getValue().toString());
 			//System.out.println(" Mostrar lletra => " + lletra.getValue().toString());
 		}
 
@@ -178,7 +170,7 @@ public class ControladorPrincipal {
 	public void resoldreParaulaExtra(String paraula) {
 		
 		// Donar punts
-		wow.getPartida().incrementaPuntuacio(5);
+		wow.getPartida().incrementarPuntuacio(5);
 		
 		// Actualitzar punts
 		actualitzaPuntuacio();
@@ -190,7 +182,11 @@ public class ControladorPrincipal {
 	}
 
 	public void actualitzaPuntuacio() {
-		lblPuntuacio.setText("Punts: " + wow.getPartida().getPuntuacio());
+
+		if(this.lblPuntuacio == null)
+			System.out.println("NULL");
+		else
+			lblPuntuacio.setText("Punts: " + wow.getPartida().getPuntuacio());
 	}
 	
 	public void carregarNivellActual() {
