@@ -28,7 +28,10 @@ public class Main extends Application {
              
             // Carregar escena
             Scene scene = new Scene(ventana);
-             
+            
+            // Posar CSS
+            //scene.getStylesheets().add("application/application.css");
+            
             // Configurar finestra
             stage.setTitle("Words of Wonders");
             //stage.setResizable(false);

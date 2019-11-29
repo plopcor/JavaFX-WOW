@@ -1,3 +1,13 @@
+#### Per afegir:
+- Veure llista de paraules extra encertades
+- Carregar nivells desde JSON
+- Imatges de fons
+=>
+		// Crear fons (carregar imatge)
+		//BackgroundImage bgImg = new BackgroundImage(new Image(new File("src/dog_2.jpg").toURI().toString(), panellMain.getWidth(), panellMain.getHeight(), false,true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+
+		// Assignar fons
+		//panellMain.setBackground(new Background(bgImg));
 
 #### Posibles afegits:
 - Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra

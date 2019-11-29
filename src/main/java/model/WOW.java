@@ -19,10 +19,6 @@ public class WOW {
 		return wow;
 	}
 	
-//	public void comencarPartida() {
-//		partida.getLocalitzacioActual();		
-//	}
-	
 	public Partida getPartida() {
 		return this.partida;
 	}
@@ -32,15 +28,6 @@ public class WOW {
 	}
 	
 	// METODES
-
-	
-//	public Localitzacio getLocalitzacio(int index) {
-//		if(index >= localitzacions.size()) {
-//			//System.err.println("Error al agafar una localitzacio per index, l'index especificat no existeix");
-//			return null;
-//		}
-//		return localitzacions.get(index);
-//	}
 	
 	public void carregaManual() {
 		

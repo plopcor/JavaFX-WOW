@@ -57,7 +57,6 @@ public class Partida {
 			return true;
 		} else {
 			System.err.println("No n'hi ha mes localitzacions disponibles");
-			System.out.println("FI DEL JOC");
 			return false;
 		}
 	}
@@ -66,18 +65,12 @@ public class Partida {
 		
 		// Avança al seguent nivell, si no te més nivells ves a la seguent localitzacio
 		if(!this.getLocalitzacioActual().seguentNivell()) {
-			this.seguentLocalitzacio();
-		}		
+			if(!this.seguentLocalitzacio()) {
+				
+				System.out.println("FI DEL JOC");
+				
+			}
+		}
 	}
-	
-	// METODES
-	
-//	// Iniciar nova partida
-//	public void comencar() {
-//		this.puntuacio = 0;
-//		this.indexLocalitzacioActual = 0;
-//
-//		carregarNivell(0);
-//	}
 
 }

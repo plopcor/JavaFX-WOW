@@ -1,13 +1,13 @@
 package controlador;
 
 import model.Direccio;
-import model.Generador;
 import model.Localitzacio;
 import model.Nivell;
 import model.ParaulaData;
 import model.WOW;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 
@@ -23,8 +23,12 @@ import java.util.Map;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class ControladorPrincipal {
@@ -67,7 +71,7 @@ public class ControladorPrincipal {
 	@FXML
 	private Pane panellInfo;
 	@FXML
-	private Text lblNivell;
+	private Text lblPuntuacio;
 
 	// Llista dels botons pressionats (i deshabilitats, per tornar a habilitar)
 	ArrayList<Button> btnsPressionats = new ArrayList<Button>();
@@ -142,7 +146,6 @@ public class ControladorPrincipal {
 			}
 		};
 
-	
 	//
 	// METODES
 	//
@@ -152,8 +155,18 @@ public class ControladorPrincipal {
 		// Donar punts
 		wow.getPartida().incrementaPuntuacio(10);
 		
+		// Actualitzar punts
+		actualitzaPuntuacio();
+		
 		// Per cada lletra de paraula, mostrala al tauler (Posar lletra al TextView associat)
 		for (Map.Entry<Node, Character> lletra : paraulaData.getLletres().entrySet()) {
+			TextField tf = (TextField) lletra.getKey();
+			tf.setText(lletra.getValue().toString());
+			//tf.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+			tf.setStyle("-fx-control-inner-background: lightgreen");
+//	        text1.setFont(Font.font(java.awt.Font.SERIF, 25));
+			
+			
 			((TextField) lletra.getKey()).setText(lletra.getValue().toString());
 			//System.out.println(" Mostrar lletra => " + lletra.getValue().toString());
 		}
@@ -167,12 +180,19 @@ public class ControladorPrincipal {
 		// Donar punts
 		wow.getPartida().incrementaPuntuacio(5);
 		
+		// Actualitzar punts
+		actualitzaPuntuacio();
+		
 		//System.out.println("Paraula extra => " + paraula);
 		
 		// Marcar com a resolta (sobre-escriura el registre del mapa amb el nou valor True ja que utilitza la mateixa clau)
 		paraulesExtra.put(paraula, true);
 	}
 
+	public void actualitzaPuntuacio() {
+		lblPuntuacio.setText("Punts: " + wow.getPartida().getPuntuacio());
+	}
+	
 	public void carregarNivellActual() {
 		
 		Localitzacio loc = wow.getPartida().getLocalitzacioActual();
@@ -194,9 +214,6 @@ public class ControladorPrincipal {
 
 		// Canviar titol de la finestra
 		Main.finestra.setTitle("WOW - " + loc.getNom() + " - Nivell: " + nivell.getNumNivell()); //Main.finestra.getTitle()
-		
-		// Mostrar nivell
-		lblNivell.setText("Nivell: " + nivell.getNumNivell());
 
 		// Generar joc
 		posarLletres(nivell.getLletres());
@@ -396,20 +413,19 @@ public class ControladorPrincipal {
 		taulellLletres.clear();
 		
 		// Posar paraula centrada al grid (en vertical)
-		LinkedHashMap<Point, Character> posicionsChars;
+		
 		// Posar lletres i agafar les seves posicions
+		LinkedHashMap<Point, Character> posicionsChars;
 		posicionsChars = posarParaula(paraula, gridMidX, gridMidY - paraulaMid, Direccio.VERTICAL);
 
 		// Treure paraula de la llista de paraules a colocar
 		llistaParaules.remove(paraula); // remove(0);
 
 		// Enviar la paraula colocada
-		/* new Character[gridParaulesMax.x][gridParaulesMax.y] */
 		posicionarParaula(llistaParaules, posicionsChars, Direccio.VERTICAL);
 
 	}
 
-	/* Character[][] taulell */
 	public void posicionarParaula(ArrayList<String> llistaParaules, LinkedHashMap<Point, Character> paraulaAnterior, Direccio dir) {
 		
 		if(llistaParaules.size() == 0)

@@ -6,10 +6,6 @@ import javafx.scene.Node;
 
 public class ParaulaData {
 
-	//Point coordsInici;
-	//Point coordsFinal;
-	
-	//ArrayList<Node> nodes = new ArrayList<Node>();
 	HashMap<Node, Character> lletresNodes; // Guarda les lletres i els seus nodes corresponents
 	boolean resolt;
 	
