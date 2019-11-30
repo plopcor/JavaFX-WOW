@@ -34,7 +34,7 @@ public class Main extends Application {
             
             // Configurar finestra
             stage.setTitle("Words of Wonders");
-            //stage.setResizable(false);
+            stage.setResizable(false);
             
             // Seleccionar escena i mostrarla
             stage.setScene(scene);

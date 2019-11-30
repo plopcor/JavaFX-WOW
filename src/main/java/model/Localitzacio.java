@@ -64,7 +64,7 @@ public class Localitzacio {
 	}
 	
 	public boolean seguentNivell() {
-		if(this.nivells.size() > this.indexNivellActual) {
+		if(this.nivells.size() > this.indexNivellActual + 1) {
 			this.indexNivellActual++;
 			return true;
 		} else {

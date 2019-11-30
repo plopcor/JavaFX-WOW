@@ -39,6 +39,8 @@ public class ControladorPrincipal {
 	private Pane panellInici;
 	@FXML
 	private Pane panellMain;
+	@FXML
+	private Pane panellFi;
 
 	// Panell Inici => Controls
 	@FXML
@@ -68,6 +70,14 @@ public class ControladorPrincipal {
 	@FXML
 	private Text lblPunts;
 
+	
+	// Panell Fi => Controls
+	@FXML
+	private Text lblFiPuntuacio;
+	@FXML
+	private Button btnFiSortir;
+	
+	
 	// Llista dels botons pressionats (i deshabilitats, per tornar a habilitar)
 	ArrayList<Button> btnsPressionats = new ArrayList<Button>();
 
@@ -77,6 +87,9 @@ public class ControladorPrincipal {
 	// Llista amb les paraules extra
 	Map<String, Boolean> paraulesExtra = new HashMap<String, Boolean>();
 
+	// Temporal (s'ha de millorar), utilitzat per saber cuan no queden més paraules
+	int numParaulesNormals = 0;
+	
 	@FXML
 	public void initialize() {
 
@@ -86,6 +99,7 @@ public class ControladorPrincipal {
 		// Mostrar pantalla d'inici amb les regles
 		panellInici.setVisible(true);
 		panellMain.setVisible(false);
+		panellFi.setVisible(false);
 
 	}
 
@@ -124,6 +138,23 @@ public class ControladorPrincipal {
 		// Habilitar els botons de les lletres
 		for (Button btn : btnsPressionats)
 			btn.setDisable(false);
+		
+		// Si no queden lletres per resoldre
+		if(numParaulesNormals == 0) {
+		
+			// Avançar al seguent nivell/localitzacio
+			// - Si no pot, fi del joc
+			if(!wow.getPartida().avancar()) {
+	
+				// Mostrar FI DEL JOC i puntuacio
+				System.out.println("Joc completat");
+				panellFi.setVisible(true);
+				lblFiPuntuacio.setText("Puntuacio: " + wow.getPartida().getPuntuacio());
+	
+				panellMain.setVisible(false);
+			}
+		}
+		
 	}
 
 	
@@ -141,7 +172,9 @@ public class ControladorPrincipal {
 			}
 		};
 
-		
+	public void btnFiSortirClick(ActionEvent event) {
+		System.exit(0);
+	}
 		
 		
 	//
@@ -152,6 +185,8 @@ public class ControladorPrincipal {
 
 		// Donar punts
 		wow.getPartida().incrementarPuntuacio(10);
+		
+		numParaulesNormals--;
 		
 		// Actualitzar punts
 		actualitzaPuntuacio();
@@ -176,7 +211,7 @@ public class ControladorPrincipal {
 		// Actualitzar punts
 		actualitzaPuntuacio();
 		
-		//System.out.println("Paraula extra => " + paraula);
+		System.out.println("Paraula extra => " + paraula);
 		
 		// Marcar com a resolta (sobre-escriura el registre del mapa amb el nou valor True ja que utilitza la mateixa clau)
 		paraulesExtra.put(paraula, true);
@@ -288,7 +323,7 @@ public class ControladorPrincipal {
 
 	private LinkedHashMap<Point, Character> posarParaula(String paraula, int x, int y, Direccio dir) {
 
-		System.out.println(" Colocar paraula => " + paraula);
+		//System.out.println(" Colocar paraula => " + paraula);
 
 		// Per retornar les posicions dels caracters colocats
 		// - Utilitza LinkedHashMap per preservar l'ordre d'inserció (necessari per
@@ -353,7 +388,7 @@ public class ControladorPrincipal {
 				i++;
 			else if (dir == Direccio.VERTICAL)
 				j++;
-
+			
 			indexChar++;
 
 			// Mentres no acabi la paraula i no es surti del grid
@@ -362,6 +397,9 @@ public class ControladorPrincipal {
 		// Afegir paraula i la seva informacio al mapa
 		paraules.put(paraula, pd);
 
+		// Incrementa el numero de paraules colocades
+		numParaulesNormals++;
+		
 		return colocat;
 
 	}
@@ -433,7 +471,8 @@ public class ControladorPrincipal {
 		// - Agafa una paraula
 		for (Iterator<String> iterator = llistaParaules.iterator(); iterator.hasNext() && !potColocar;) {
 			String paraula = iterator.next();
-			System.out.println(paraula); //DEBUG
+			
+			//System.out.println(paraula); //DEBUG
 			
 			// Per cada lletra de la paraula anterior
 			for(Map.Entry<Point, Character> coord : paraulaAnterior.entrySet()) {

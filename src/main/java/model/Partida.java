@@ -52,7 +52,7 @@ public class Partida {
 
 	public boolean seguentLocalitzacio() {
 		
-		if(this.localitzacions.size() > this.indexLocalitzacioActual) {
+		if(this.localitzacions.size() > this.indexLocalitzacioActual + 1) {
 			this.indexLocalitzacioActual++;
 			return true;
 		} else {
@@ -61,16 +61,15 @@ public class Partida {
 		}
 	}
 
-	public void avancar() {
+	public boolean avancar() {
 		
 		// Avança al seguent nivell, si no te més nivells ves a la seguent localitzacio
 		if(!this.getLocalitzacioActual().seguentNivell()) {
 			if(!this.seguentLocalitzacio()) {
-				
-				System.out.println("FI DEL JOC");
-				
+				return false;				
 			}
 		}
+		return true;
 	}
 
 }
