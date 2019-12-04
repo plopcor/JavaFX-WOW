@@ -144,7 +144,7 @@ public class ControladorPrincipal {
 		
 		// Si no queden lletres per resoldre
 		if(numParaulesNormals == 0) {
-		
+			
 			// Avançar al seguent nivell/localitzacio
 			// - Si no pot, fi del joc
 			if(!wow.getPartida().avancar()) {
@@ -155,6 +155,14 @@ public class ControladorPrincipal {
 				lblFiPuntuacio.setText("Puntuacio: " + wow.getPartida().getPuntuacio());
 	
 				panellMain.setVisible(false);
+			
+			} else {
+				
+				System.out.println("\n[NIVELL COMPLETAT]");
+				System.out.println("Pasant al seguent nivell");
+				
+				// Carrega el seguent nivell
+				carregarNivellActual();
 			}
 		}
 		
@@ -295,8 +303,9 @@ public class ControladorPrincipal {
 	// Posar TextFields per les paraules
 	private void posarParaules(ArrayList<String> llistaParaules) {
 
-		System.out.println("\nColocant paraules al tauler");
-
+		// Netejar tauler
+		gridParaules.getChildren().clear();
+		
 		// Treure paraules del HashMap
 		this.paraules.clear();
 		// Treure coordenades de les lletres
@@ -423,6 +432,8 @@ public class ControladorPrincipal {
 			return;
 		}
 
+		System.out.println("\nColocant paraules al tauler");
+		
 		// Ordenar paraules per longitud
 		Collections.sort(llistaParaules, new Comparator<String>() {
 			public int compare(String str1, String str2) {
