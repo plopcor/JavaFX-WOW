@@ -5,6 +5,8 @@
 - Generacio automatica dels botons per a les lletres
 - Generacio automatica del tauler donada una llista de paraules
 - Poder tenir una llista de localitzacions, cadascuna amb una llista de nivells
+- Avisar dels errors/encerts
+- Carregar nivells desde JSON
 
 
 #### Millorar:
@@ -12,11 +14,9 @@
 - Pantalla de "Fi del joc"
 
 #### Per afegir:
-- Avisar dels errors/encerts
 - Guardar i carregar partida (Serialitzacio)
 - Veure llista de paraules extra encertades
 - Crear classe amb funcions per treballar amb els fitxers (Text pla, JSON i binari)
-- Carregar nivells desde JSON
 - Imatges de fons segons la localitzacio
   Codi =>
 		// Crear fons (carregar imatge)
