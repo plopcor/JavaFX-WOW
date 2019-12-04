@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class WOW {
 
 	private static WOW wow;
@@ -28,6 +30,27 @@ public class WOW {
 	}
 	
 	// METODES
+	
+	public void carregaAutomatica() {
+		
+		System.out.println("Llegint nivells del fitxer JSON\n");
+		ArrayList<Localitzacio> locs = Dades.JSON.getLocalitzacions();
+
+		if(locs.size() > 0) {
+			// Afegir localitzacions a la partida
+			this.partida.setLocalitzacions(locs);
+			
+			System.out.println("S'han carregat " + locs.size() + " localitzacions");
+			for(Localitzacio l : locs)
+				System.out.println("- " + l.getNom() + " \tNivells: " + l.getNivells().size());
+			
+		} else {
+			
+			// Mostrar error i sortir
+			System.err.println("Error, el fitxer JSON no conte cap localitzacio!");
+			System.exit(1);
+		}	
+	}
 	
 	public void carregaManual() {
 		

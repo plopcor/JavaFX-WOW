@@ -7,7 +7,7 @@ public class Localitzacio {
 	String nom;
 	String nomFitxerImatge;
 	ArrayList<Nivell> nivells;
-	int indexNivellActual;
+	int indexNivellActual = 0;
 	
 	
 	// CONSTRUCTOR
@@ -23,6 +23,11 @@ public class Localitzacio {
 		this.nomFitxerImatge = "default";
 		this.nivells = nivells;
 		this.indexNivellActual = 0;
+	}
+	
+	public Localitzacio(String nom, String imatge, ArrayList<Nivell> nivells) {
+		this(nom, nivells);
+		this.nomFitxerImatge = imatge;
 	}
 	
 	// GETTERS & SETTERS

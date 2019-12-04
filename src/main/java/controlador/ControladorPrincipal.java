@@ -93,9 +93,12 @@ public class ControladorPrincipal {
 	@FXML
 	public void initialize() {
 
-		// Carrega dades hardcodejades
-		wow.carregaManual();
+//		// Carrega dades hardcodejades
+//		wow.carregaManual();
 
+		// Carregar dades desde JSON
+		wow.carregaAutomatica();
+		
 		// Mostrar pantalla d'inici amb les regles
 		panellInici.setVisible(true);
 		panellMain.setVisible(false);
@@ -256,7 +259,7 @@ public class ControladorPrincipal {
 		// Netejar lletres
 		gridLletres.getChildren().clear();
 
-		System.out.println("Colocant lletres disponibles:");
+		System.out.println("\nColocant lletres disponibles:");
 
 		// Carregar lletres
 		Button btn;
@@ -266,16 +269,17 @@ public class ControladorPrincipal {
 		// Remenar lletres
 		Collections.shuffle(lletres);
 		
+		System.out.println(lletres);
+		
 		// Colocar lletres
 		for (Character ch : lletres) {
-
-			System.out.println(" Colocant lletra => " + ch);
 
 			btn = new Button();
 			btn.setText(ch.toString());
 			btn.setMaxWidth(Double.MAX_VALUE);
 			btn.setMaxHeight(Double.MAX_VALUE);
 			btn.setOnAction(eventLletraClick);
+			
 			gridLletres.add(btn, (flag ? 0 : 1), i);
 
 			if (!flag)
@@ -291,26 +295,19 @@ public class ControladorPrincipal {
 	// Posar TextFields per les paraules
 	private void posarParaules(ArrayList<String> llistaParaules) {
 
-		System.out.println("Colocant paraules al tauler");
+		System.out.println("\nColocant paraules al tauler");
 
 		// Treure paraules del HashMap
 		this.paraules.clear();
 		// Treure coordenades de les lletres
 		this.taulellLletres.clear();
 
+		// CREAR TAULER
+		
 		// CABLEJAT
 //		posarParaula("LAMPARA", 0, 0, Direccio.HORITZONTAL);
 //		posarParaula("ALARMA", 1, 0, Direccio.VERTICAL);
 //		posarParaula("PALMA", 0, 5, Direccio.HORITZONTAL);
-
-//		posarParaula("RAMPA", new Point(,), new Point(,));
-//		posarParaula("RAMA", new Point(,), new Point(,));
-//		posarParaula("AMAR", new Point(,), new Point(,));
-//		posarParaula("PARA", new Point(,), new Point(,));
-//		posarParaula("MALA", new Point(,), new Point(,));
-//		posarParaula("MAPA", new Point(,), new Point(,));
-//		posarParaula("ARMA", new Point(,), new Point(,));
-//		posarParaula("PALA", new Point(,), new Point(,));
 
 		// NO CABLEJAT
 		generarTauler(llistaParaules);

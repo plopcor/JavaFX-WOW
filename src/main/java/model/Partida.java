@@ -26,7 +26,11 @@ public class Partida {
 	}
 	
 	public void setLocalitzacions(ArrayList<Localitzacio> localitzacions) {
-		this.localitzacions = localitzacions;
+		
+		if(localitzacions.size() > 0)
+			this.localitzacions = localitzacions;
+		else
+			System.err.println("Error, no n'hi ha localitzacions");
 	}
 
 	public void afegirLocalitzacio(Localitzacio localitzacio) {
