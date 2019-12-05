@@ -450,7 +450,12 @@ public class ControladorPrincipal {
 		this.paraules.clear();
 		// Treure coordenades de les lletres
 		this.taulellLletres.clear();
+		// netejar paraules i paraules extra
+		paraules.clear();
+		paraulesExtra.clear();
 
+		// Treure paraules
+		
 		// CREAR TAULER
 		
 		// CABLEJAT
@@ -460,7 +465,6 @@ public class ControladorPrincipal {
 
 		// NO CABLEJAT
 		generarTauler(llistaParaules);
-
 	}
 
 	// Quan es genera el tauler (colocar cada lletra de la paraula), mirar si la
@@ -551,8 +555,8 @@ public class ControladorPrincipal {
 	}
 
 	private void posarParaulesExtra(ArrayList<String> llistaParaulesExtra) {
-
-		paraulesExtra.clear();
+		
+		// generarTauler neteja les paraules extra anteriors
 
 		// Guardar paraules a la llista (marcar com no trobades)
 		for (String paraula : llistaParaulesExtra)
@@ -571,7 +575,10 @@ public class ControladorPrincipal {
 			System.err.println("No es pot generar el tauler, no n'hi ha paraules");
 			return;
 		}
-
+		
+		// Treure coordenades de les lletres ja  existents
+		taulellLletres.clear();
+		
 		System.out.println("\nColocant paraules al tauler");
 		
 		// Ordenar paraules per longitud
@@ -588,9 +595,6 @@ public class ControladorPrincipal {
 		int gridMidY = gridSize.y / 2 - 1;
 		int paraulaMid = (int) (paraula.length() / 2d);
 
-		// Treure coordenades de les lletres ja  existents
-		taulellLletres.clear();
-		
 		// Posar paraula centrada al grid (en vertical)
 		
 		// Posar lletres i agafar les seves posicions
@@ -602,7 +606,12 @@ public class ControladorPrincipal {
 
 		// Enviar la paraula colocada
 		posicionarParaula(llistaParaules, posicionsChars, Direccio.VERTICAL);
-
+		
+		// Veure si queden paraules normals sense colocar
+		if(llistaParaules.size() > 0)
+			//Afegir les paraules normals com a paraules extra
+			for(String par : llistaParaules)
+				paraulesExtra.put(par, false);
 	}
 
 	public void posicionarParaula(ArrayList<String> llistaParaules, LinkedHashMap<Point, Character> paraulaAnterior, Direccio dir) {
