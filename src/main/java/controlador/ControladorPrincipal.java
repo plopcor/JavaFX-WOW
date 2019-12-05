@@ -9,7 +9,6 @@ import model.WOW;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.awt.Point;
@@ -36,22 +35,24 @@ public class ControladorPrincipal {
 	// Mapa per generar el tauler0
 	HashMap<Point, Character> taulellLletres = new HashMap<Point, Character>();
 	
-	// Panells
+	// PANELLS
 	@FXML
 	private Pane panellInici;
 	@FXML
 	private Pane panellMain;
 	@FXML
+	private Pane panellNivellCompletat;
+	@FXML
 	private Pane panellFi;
 
-	// Panell Inici => Controls
+	
+	// PANELL => INICI
 	@FXML
 	private Button btnIniciar;
 	@FXML
 	private TextArea txtNormes;
-
 	
-	// Panell Main => Controls
+	// PANELL => PRINCIPAL (JOC)
 	
 	// - Tauler
 	@FXML
@@ -66,14 +67,20 @@ public class ControladorPrincipal {
 	@FXML
 	private Button btnValidar;
 	
-	// - Panell Informacio
+	// => SUBPANELL => INFORMACIÓ
 	@FXML
 	private Pane panellInfo;
 	@FXML
 	private Text lblPunts;
 
+	// PANELL => NIVELL COMPLETAT
+	@FXML
+	private Text lblNivellCompletat;
+	@FXML
+	private Button btnSeguentNivell;
 	
-	// Panell Fi => Controls
+	
+	// PANELL => FI DEL JOC
 	@FXML
 	private Text lblFiPuntuacio;
 	@FXML
@@ -91,7 +98,7 @@ public class ControladorPrincipal {
 	// Llista amb les paraules extra
 	Map<String, Boolean> paraulesExtra = new HashMap<String, Boolean>();
 
-	// Temporal (s'ha de millorar), utilitzat per saber cuan no queden més paraules
+	// Temporal (s'ha de millorar), utilitzat per saber cuan no queden més paraules al nivell
 	int numParaulesNormals = 0;
 	
 	@FXML
@@ -107,6 +114,7 @@ public class ControladorPrincipal {
 		panellInici.setVisible(true);
 		panellMain.setVisible(false);
 		panellFi.setVisible(false);
+		panellNivellCompletat.setVisible(false);
 
 	}
 
@@ -150,23 +158,27 @@ public class ControladorPrincipal {
 		if(numParaulesNormals == 0) {
 			
 			// Avançar al seguent nivell/localitzacio
-			// - Si no pot, fi del joc
-			if(!wow.getPartida().avancar()) {
+			if(wow.getPartida().avancar()) {
 	
-				// Mostrar FI DEL JOC i puntuacio
-				System.out.println("Joc completat");
-				panellFi.setVisible(true);
-				lblFiPuntuacio.setText("Puntuacio: " + wow.getPartida().getPuntuacio());
-	
+				// Mostrar panell de nivell completat
+				lblNivellCompletat.setText("Has completat el nivell " + wow.getPartida().getLocalitzacioActual().getIndexNivellActual() + " i tens un total de " + wow.getPartida().getPuntuacio() + " punts");
+				panellNivellCompletat.setVisible(true);
 				panellMain.setVisible(false);
-			
-			} else {
 				
 				System.out.println("\n[NIVELL COMPLETAT]");
 				System.out.println("Pasant al seguent nivell");
 				
 				// Carrega el seguent nivell
 				carregarNivellActual();
+			
+			} else {
+				
+				// Mostrar FI DEL JOC i puntuacio
+				System.out.println("Joc completat");
+				panellFi.setVisible(true);
+				lblFiPuntuacio.setText("Puntuacio: " + wow.getPartida().getPuntuacio());
+	
+				panellMain.setVisible(false);
 			}
 		}
 		
@@ -177,7 +189,7 @@ public class ControladorPrincipal {
 	// EVENTS
 	//
 
-	// Click Boto - Lletra
+	// MAIN => Click btnLletra
 	EventHandler<ActionEvent> eventLletraClick = new EventHandler<ActionEvent>(){
 		public void handle(ActionEvent event){
 			Button btn = (Button)event.getSource();
@@ -187,7 +199,7 @@ public class ControladorPrincipal {
 		}
 	};	
 
-	// KeyPressed - txtParaula
+	// txtParaula - KeyPressed
 	@FXML
 	public void txtParaulaKeyPressed(KeyEvent event) {
 
@@ -205,13 +217,13 @@ public class ControladorPrincipal {
 				}
 				break;
 			
-			case ENTER:
+			case ENTER: //Validar
 				btnValidar.fire();
 				break;	
 		}
 	}
 	
-	//KeyTyped - txtParaula
+	// txtParaula - KeyPressed
 	@FXML
 	public void txtParaulaKeyTyped(KeyEvent event) {
 		
@@ -235,6 +247,22 @@ public class ControladorPrincipal {
 				}
 	}
 	
+	@FXML
+	public void btnPistaClick(ActionEvent event) {
+		System.out.println("PISTA");
+	}
+	
+	// NIVELL COMPLETAT
+	// => Boto Seguent Nivell
+	@FXML
+	public void btnSeguentNivellClick(ActionEvent event) {
+		panellNivellCompletat.setVisible(false);
+		panellMain.setVisible(true);
+	}
+	
+	// FI DEL JOC
+	// => Boto Sortir
+	@FXML
 	public void btnFiSortirClick(ActionEvent event) {
 		System.exit(0);
 	}
