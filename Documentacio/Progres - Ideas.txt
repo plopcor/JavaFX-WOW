@@ -5,7 +5,9 @@
 - Generacio automatica dels botons per a les lletres
 - Generacio automatica del tauler donada una llista de paraules
 - Poder tenir una llista de localitzacions, cadascuna amb una llista de nivells
-- Avisar dels errors/encerts
+
+#### Afegit/millorat despres
+- Avisar dels errors/encerts (ja ho feia avants)
 - Carregar nivells desde JSON
 - Permetre utilitzar els botons pulsant tecles mentres es fa focus al input (en comptes d'anar clicant els botons).
   @ Permetra escriure frases mes rapidament
@@ -15,6 +17,8 @@
 - Pantalla de "Seguent nivell"
 - Fer que el numNivell sigui definit per la seva posicio dins de la llista de nivells de la Localitzacio que els conté
 - Boto per mostrar pista, agafara una lletra aleatoria i destapara totes les lletres iguals (costara 50 punts)
+- Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
+
 
 #### Millorar:
 - Pantalla d'inici
@@ -33,6 +37,3 @@
 		// Assignar fons
 		//panellMain.setBackground(new Background(bgImg));
 
-
-#### Posibles afegits:
-- Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
