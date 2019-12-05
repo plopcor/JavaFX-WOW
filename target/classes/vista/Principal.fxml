@@ -13,13 +13,13 @@
 
 <Pane prefHeight="665.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ControladorPrincipal">
    <children>
-      <Pane fx:id="panellInici" prefHeight="665.0" prefWidth="558.0">
+      <Pane fx:id="panellInici" prefHeight="665.0" prefWidth="558.0" visible="false">
          <children>
             <Button fx:id="btnIniciar" layoutX="178.0" layoutY="397.0" mnemonicParsing="false" onAction="#clickBtnIniciar" prefHeight="60.0" prefWidth="203.0" text="Començar" />
             <TextArea fx:id="PanelMain" editable="false" layoutX="58.0" layoutY="41.0" prefHeight="316.0" prefWidth="442.0" text="&#10;Benvingut a Words of Wonder (WOW), un joc de crucigrames.&#10;&#10;En que consisteix?&#10;- S'et donaran unes lletres i es generara un tauler amb diferents paraules.&#10;- L'objectiu es utilitzar les lletres per formar paraules i descobrir totes les que n'hi ha al tauler&#10;&#10;Bona sort!&#10;&#10;Autor: Pol&#10;@ Aquesta es una versio de WOW jugable pero no definitiva." wrapText="true" />
          </children>
       </Pane>
-      <AnchorPane fx:id="panellMain" layoutX="1.0" prefHeight="665.0" prefWidth="558.0" visible="false">
+      <AnchorPane fx:id="panellMain" layoutX="1.0" prefHeight="665.0" prefWidth="558.0">
          <children>
             <GridPane fx:id="gridLletres" layoutX="76.0" layoutY="443.0" prefHeight="178.0" prefWidth="405.0" AnchorPane.bottomAnchor="43.60000000000002" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0">
               <columnConstraints>
@@ -69,7 +69,7 @@
             <Pane fx:id="panellInfo" layoutX="-1.0" layoutY="299.0" prefHeight="32.0" prefWidth="473.0" AnchorPane.bottomAnchor="234.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.39999999999997726">
                <children>
                   <Text fx:id="lblPunts" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punts:" />
-                  <TextField fx:id="txtParaula" editable="false" layoutX="184.0" layoutY="2.0" prefHeight="25.0" prefWidth="191.0" />
+                  <TextField fx:id="txtParaula" editable="false" layoutX="184.0" layoutY="2.0" onKeyPressed="#txtParaulaKeyPressed" onKeyTyped="#txtParaulaKeyTyped" prefHeight="25.0" prefWidth="191.0" />
                   <Button fx:id="btnValidar" layoutX="472.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnValidarClick" text="Validar" />
                </children>
             </Pane>

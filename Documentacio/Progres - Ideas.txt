@@ -7,8 +7,12 @@
 - Poder tenir una llista de localitzacions, cadascuna amb una llista de nivells
 - Avisar dels errors/encerts
 - Carregar nivells desde JSON
-
-
+- Permetre utilitzar els botons pulsant tecles mentres es fa focus al input (en comptes d'anar clicant els botons).
+  @ Permetra escriure frases mes rapidament
+- Permetre esborrar lletres i acceptar la paraula actual amb pulsant les tecles (en comptes de clicar validar)
+  @ Backspace/Esborrar: Esborrar ultima lletra
+  @ Enter: Validar paraula actual
+  
 #### Millorar:
 - Pantalla d'inici
 - Pantalla de "Fi del joc"
@@ -29,7 +33,6 @@
 #### Posibles afegits:
 - Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
 - Fer que el numNivell sigui definit per la seva posicio dins de la llista de nivells de la Localitzacio que els conté
-- Permetre pulsar tecles mentres es fa focus al input per utilitzarles (en comptes d'anar clicant els botons).
-  @ Buscara si n'hi ha un boto amb aquesta tecla i el clickara (btnLletra.fire())
-  @ Haura de comprovar que existeix un boto amb aquesta lletra i a més ESTA HABILITAT
+
+
 - Al pressionar "Enter", clicara al boto de "Validar"

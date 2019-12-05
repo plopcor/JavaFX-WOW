@@ -9,6 +9,8 @@ import model.WOW;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -77,9 +79,11 @@ public class ControladorPrincipal {
 	@FXML
 	private Button btnFiSortir;
 	
+	// Llista dels botons de les lletres
+	HashMap<Button, Character> btnsLletres = new HashMap<Button, Character>();
 	
-	// Llista dels botons pressionats (i deshabilitats, per tornar a habilitar)
-	ArrayList<Button> btnsPressionats = new ArrayList<Button>();
+	// Llista dels botons de les lletres pressionats (i deshabilitats, per tornar a habilitar)
+	ArrayList<Button> btnsLletresPressionats = new ArrayList<Button>();
 
 	// Llista amb la posicio de les paraules
 	HashMap<String, ParaulaData> paraules = new HashMap<String, ParaulaData>();
@@ -139,7 +143,7 @@ public class ControladorPrincipal {
 		}
 
 		// Habilitar els botons de les lletres
-		for (Button btn : btnsPressionats)
+		for (Button btn : btnsLletresPressionats)
 			btn.setDisable(false);
 		
 		// Si no queden lletres per resoldre
@@ -176,13 +180,59 @@ public class ControladorPrincipal {
 	// Click Boto - Lletra
 	EventHandler<ActionEvent> eventLletraClick = new EventHandler<ActionEvent>(){
 		public void handle(ActionEvent event){
-			Button btn=(Button)event.getSource();
+			Button btn = (Button)event.getSource();
 			txtParaula.setText(txtParaula.getText() + btn.getText());
 			btn.setDisable(true);
-			btnsPressionats.add(btn);
-			}
-		};
+			btnsLletresPressionats.add(btn);
+		}
+	};	
 
+	// KeyPressed - txtParaula
+	@FXML
+	public void txtParaulaKeyPressed(KeyEvent event) {
+
+		// Si es pulsa una tecla (permet agafar les tecles especials com BACKSPACE i ENTER)
+		
+		// Segons la tecla pressionada
+		switch(event.getCode()) {
+			case BACK_SPACE: //Esborrar
+				// Treure l'ultim caracter i habilitar el seu boto
+				if(txtParaula.getText().length() > 0) {
+					txtParaula.setText(txtParaula.getText().substring(0, txtParaula.getText().length()));
+					btnsLletresPressionats.get(btnsLletresPressionats.)
+				}
+				break;
+			
+			case ENTER:
+				btnValidar.fire();
+				break;	
+		}
+	}
+	
+	//KeyTyped - txtParaula
+	@FXML
+	public void txtParaulaKeyTyped(KeyEvent event) {
+		
+		// Si s'escriu un caracter (permet agafar el caracter que es vol escriure)
+		Character ch = event.getCharacter().toUpperCase().charAt(0);
+		
+		// Buscar si n'hi ha un boto amb aquest caracter
+		if(btnsLletres.containsValue(ch))
+			
+			// Per cada boto
+			for(Map.Entry<Button, Character> par : btnsLletres.entrySet())
+
+				// Te el caracter i el boto esta habilitat??
+				if(par.getValue().equals(ch) && !par.getKey().isDisable()) {
+					
+					// Deshabilitar, afegir a la llista de botons pressionats i posar caracter al input text
+					par.getKey().setDisable(true);
+					btnsLletresPressionats.add(par.getKey());
+					txtParaula.setText(txtParaula.getText() + ch);
+					break;
+				}
+	}
+	
 	public void btnFiSortirClick(ActionEvent event) {
 		System.exit(0);
 	}
@@ -266,7 +316,9 @@ public class ControladorPrincipal {
 
 		// Netejar lletres
 		gridLletres.getChildren().clear();
-
+		btnsLletres.clear();
+		btnsLletresPressionats.clear();
+		
 		System.out.println("\nColocant lletres disponibles:");
 
 		// Carregar lletres
@@ -296,6 +348,10 @@ public class ControladorPrincipal {
 
 			// System.out.println("Boto: Lletra => " + ch + " Posicio => " + i + ", " +
 			// (flag ? 0 : 1));
+			
+			// Afegir al mapa de botons de les lletres
+			btnsLletres.put(btn, ch);
+			
 		}
 
 	}
