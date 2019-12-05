@@ -32,7 +32,7 @@ public class ControladorPrincipal {
 	// Instancia del joc
 	WOW wow = WOW.getInstance();
 
-	// Mapa per generar el tauler0
+	// Mapa per generar el tauler
 	HashMap<Point, Character> taulellLletres = new HashMap<Point, Character>();
 	
 	// PANELLS
@@ -128,6 +128,8 @@ public class ControladorPrincipal {
 		// Mostrar pantalla de joc
 		panellInici.setVisible(false);
 		panellMain.setVisible(true);
+		
+		txtParaula.requestFocus();
 
 	}
 
@@ -219,7 +221,9 @@ public class ControladorPrincipal {
 			
 			case ENTER: //Validar
 				btnValidar.fire();
-				break;	
+				break;
+				
+			default:
 		}
 	}
 	
@@ -249,7 +253,53 @@ public class ControladorPrincipal {
 	
 	@FXML
 	public void btnPistaClick(ActionEvent event) {
-		System.out.println("PISTA");
+		
+		// Comprovar que te puntuacio suficient
+		if(wow.getPartida().getPuntuacio() < 50) {
+			System.out.println("Pista => No tens punts suficients (50 punts necessaris)");
+			return;
+		}
+		
+		// Treure els 50 punts del cost de la pista
+		wow.getPartida().setPuntuacio(wow.getPartida().getPuntuacio() - 50);
+		
+		// Mostra nova puntuacio
+		actualitzaPuntuacio();
+		
+		Character ch = null;
+		
+		// Busca una paraula que encara no estigui resolta i agafa una de les seves lletres
+		for(Map.Entry<String, ParaulaData> par : paraules.entrySet()) {
+			if(!par.getValue().isResolt()) {
+				
+				// Agafa una lletra aleatoria
+				// - Crear un array amb les lletres (per poder agafar una aleatoriament)
+				Character[] llistaChs = par.getValue().getLletres().values().toArray(new Character[par.getValue().getLletres().size()]);
+				// - Agafa una aleatoria
+				ch = llistaChs[(int)(Math.random() * par.getValue().getLletres().size())];				
+				break;
+			}
+		}
+		
+		if(ch == null) {
+			return;
+		}
+		
+		System.out.println("\nPista => " + ch);
+		
+		// Busca totes les lletres iguals a la escollida i mostrales
+		for(Map.Entry<String, ParaulaData> par : paraules.entrySet()) {
+			
+			// Si la paraula conte la lletra
+			if(par.getKey().contains(ch.toString()))
+			
+				// Per cada lletra de la paraula
+				for(Map.Entry<Node, Character> subPar : par.getValue().getLletres().entrySet())
+					
+					// Si es la mateixa lletra que la escollida, destapala
+					if(subPar.getValue().equals(ch))
+						destaparCasella((TextField) subPar.getKey(), subPar.getValue().toString());
+		}
 	}
 	
 	// NIVELL COMPLETAT
@@ -271,7 +321,7 @@ public class ControladorPrincipal {
 	//
 	// METODES
 	//
-
+	
 	public void resoldreParaula(ParaulaData paraulaData) {
 
 		// Donar punts
@@ -284,10 +334,7 @@ public class ControladorPrincipal {
 		
 		// Per cada lletra de paraula, mostrala al tauler (Posar lletra al TextView associat)
 		for (Map.Entry<Node, Character> lletra : paraulaData.getLletres().entrySet()) {
-			TextField tf = (TextField) lletra.getKey();
-			tf.setText(lletra.getValue().toString());
-			tf.setStyle("-fx-control-inner-background: lightgreen");
-			//System.out.println(" Mostrar lletra => " + lletra.getValue().toString());
+			destaparCasella((TextField) lletra.getKey(), lletra.getValue().toString());
 		}
 
 		// Marca com a resolta
@@ -308,6 +355,13 @@ public class ControladorPrincipal {
 		paraulesExtra.put(paraula, true);
 	}
 
+	// Destapar una casella del taulell
+		public void destaparCasella(TextField txtField, String text) {
+			txtField.setText(text);
+			txtField.setStyle("-fx-control-inner-background: lightgreen");
+			//System.out.println(" Mostrar lletra => " + text);
+		}
+	
 	public void actualitzaPuntuacio() {
 		lblPunts.setText("Punts: " + wow.getPartida().getPuntuacio());
 	}

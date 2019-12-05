@@ -19,7 +19,7 @@
             <TextArea fx:id="PanelMain" editable="false" layoutX="58.0" layoutY="41.0" prefHeight="316.0" prefWidth="442.0" text="&#10;Benvingut a Words of Wonder (WOW), un joc de crucigrames.&#10;&#10;En que consisteix?&#10;- S'et donaran unes lletres i es generara un tauler amb diferents paraules.&#10;- L'objectiu es utilitzar les lletres per formar paraules i descobrir totes les que n'hi ha al tauler&#10;&#10;Bona sort!&#10;&#10;Autor: Pol&#10;@ Aquesta es una versio de WOW jugable pero no definitiva." wrapText="true" />
          </children>
       </Pane>
-      <AnchorPane fx:id="panellMain" layoutX="1.0" prefHeight="665.0" prefWidth="558.0" visible="false">
+      <AnchorPane fx:id="panellMain" layoutX="1.0" prefHeight="665.0" prefWidth="558.0">
          <children>
             <GridPane fx:id="gridLletres" layoutX="76.0" layoutY="443.0" prefHeight="178.0" prefWidth="405.0" AnchorPane.bottomAnchor="43.60000000000002" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0">
               <columnConstraints>
@@ -73,7 +73,7 @@
                   <Button fx:id="btnValidar" layoutX="419.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnValidarClick" text="Validar" />
                </children>
             </Pane>
-            <Button fx:id="btnPista" layoutX="25.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnPistaClick" text="Pista" />
+            <Button fx:id="btnPista" layoutX="10.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnPistaClick" text="Pista" />
          </children>
       </AnchorPane>
       <Pane fx:id="panellFi" prefHeight="665.0" prefWidth="558.0" visible="false">
@@ -95,7 +95,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="panellNivellCompletat" prefHeight="665.0" prefWidth="559.0">
+      <Pane fx:id="panellNivellCompletat" prefHeight="665.0" prefWidth="559.0" visible="false">
          <children>
             <Text layoutX="137.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIVELL COMPLETAT" textAlignment="CENTER">
                <font>

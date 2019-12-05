@@ -12,10 +12,14 @@
 - Permetre esborrar lletres i acceptar la paraula actual amb pulsant les tecles (en comptes de clicar validar)
   @ Backspace/Esborrar: Esborrar ultima lletra
   @ Enter: Validar paraula actual
-  
+- Pantalla de "Seguent nivell"
+- Fer que el numNivell sigui definit per la seva posicio dins de la llista de nivells de la Localitzacio que els conté
+- Boto per mostrar pista, agafara una lletra aleatoria i destapara totes les lletres iguals (costara 50 punts)
+
 #### Millorar:
 - Pantalla d'inici
 - Pantalla de "Fi del joc"
+- Pantalla de "Seguent nivell"
 
 #### Per afegir:
 - Guardar i carregar partida (Serialitzacio)
@@ -32,7 +36,3 @@
 
 #### Posibles afegits:
 - Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
-- Fer que el numNivell sigui definit per la seva posicio dins de la llista de nivells de la Localitzacio que els conté
-
-
-- Al pressionar "Enter", clicara al boto de "Validar"
