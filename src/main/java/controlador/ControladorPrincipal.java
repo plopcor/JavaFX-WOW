@@ -197,9 +197,10 @@ public class ControladorPrincipal {
 		switch(event.getCode()) {
 			case BACK_SPACE: //Esborrar
 				// Treure l'ultim caracter i habilitar el seu boto
+				System.out.println("Si => " + (txtParaula.getText().length() > 0 ?  "SI": "No"));
 				if(txtParaula.getText().length() > 0) {
-					txtParaula.setText(txtParaula.getText().substring(0, txtParaula.getText().length()));
-					btnsLletresPressionats.get(btnsLletresPressionats.)
+					txtParaula.setText(txtParaula.getText().substring(0, txtParaula.getText().length() - 1));
+					btnsLletresPressionats.get(btnsLletresPressionats.size() - 1).setDisable(false);
 				}
 				break;
 			
