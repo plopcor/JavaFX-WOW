@@ -172,13 +172,17 @@ public class ControladorPrincipal {
 		// Si no queden lletres per resoldre
 		if(numParaulesNormals == 0) {
 			
+			// Posar nivell i punts aconseguits (encara no sera visible)
+			lblNivellCompletat.setText("Has completat el nivell " + (wow.getPartida().getLocalitzacioActual().getIndexNivellActual() + 1) + " i tens un total de " + wow.getPartida().getPuntuacio() + " punts");
+			
 			// Avançar al seguent nivell/localitzacio
 			if(wow.getPartida().avancar()) {
 	
 				// Mostrar panell de nivell completat
-				lblNivellCompletat.setText("Has completat el nivell " + wow.getPartida().getLocalitzacioActual().getIndexNivellActual() + " i tens un total de " + wow.getPartida().getPuntuacio() + " punts");
 				panellNivellCompletat.setVisible(true);
 				panellMain.setVisible(false);
+				
+				this.btnSeguentNivell.requestFocus();
 				
 				System.out.println("\n[NIVELL COMPLETAT]");
 				System.out.println("Pasant al seguent nivell");
