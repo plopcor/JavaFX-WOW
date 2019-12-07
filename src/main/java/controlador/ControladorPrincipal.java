@@ -593,6 +593,7 @@ public class ControladorPrincipal {
 		
 		// Treure coordenades de les lletres ja  existents
 		taulellLletres.clear();
+		coordsNodesLletres.clear();
 		
 		System.out.println("\nColocant paraules al tauler");
 		
