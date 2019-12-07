@@ -9,6 +9,7 @@
 #### Afegit/millorat despres
 - Avisar dels errors/encerts (ja ho feia avants)
 - Carregar nivells desde JSON
+- Crear classe amb funcions per treballar amb els fitxers (Text pla, JSON i binari)
 - Permetre utilitzar els botons pulsant tecles mentres es fa focus al input (en comptes d'anar clicant els botons).
   @ Permetra escriure frases mes rapidament
 - Permetre esborrar lletres i acceptar la paraula actual amb pulsant les tecles (en comptes de clicar validar)
@@ -19,6 +20,7 @@
 - Boto per mostrar pista, agafara una lletra aleatoria i destapara totes les lletres iguals (costara 50 punts)
 - Fer que les paraules normals que no s'haguin pogut posar al tauler, siguin afegides a les paraules extra
 - Veure llista de paraules extra encertades
+- Imatges de fons segons la localitzacio
 
 #### Millorar:
 - Pantalla d'inici
@@ -27,12 +29,3 @@
 
 #### Per afegir:
 - Guardar i carregar partida (Serialitzacio)
-- Crear classe amb funcions per treballar amb els fitxers (Text pla, JSON i binari)
-- Imatges de fons segons la localitzacio
-  Codi =>
-		// Crear fons (carregar imatge)
-		//BackgroundImage bgImg = new BackgroundImage(new Image(new File("src/dog_2.jpg").toURI().toString(), panellMain.getWidth(), panellMain.getHeight(), false,true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-
-		// Assignar fons
-		//panellMain.setBackground(new Background(bgImg));
-
