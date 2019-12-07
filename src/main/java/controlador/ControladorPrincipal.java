@@ -9,6 +9,7 @@ import model.WOW;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
 import java.awt.Point;
@@ -23,6 +24,11 @@ import java.util.Map;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -405,7 +411,8 @@ public class ControladorPrincipal {
 		posarLletres(nivell.getLletres());
 		posarParaules(nivell.getParaules());
 		posarParaulesExtra(nivell.getParaulesExtra());
-
+		posarImatgeDeFons(loc);
+		
 	}
 
 	// Posar els botons amb les lletres disponibles
@@ -578,6 +585,17 @@ public class ControladorPrincipal {
 			paraulesExtra.put(paraula, false);
 	}
 
+	private void posarImatgeDeFons(Localitzacio loc) {
+		
+		// Posar imatge de fons
+		if(loc.hasFitxerImatge()) {	
+			BackgroundImage bgImg = new BackgroundImage(new Image(loc.getFitxerImatge().toURI().toString(), panellMain.getWidth(), panellMain.getHeight(), false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+			panellMain.setBackground(new Background(bgImg));
+			
+		} else
+			panellMain.setBackground(null);
+	}
+	
 	// Netejar tauler (lletres i paraules)
 	public void netejarTauler() {
 		gridLletres.getChildren().clear();

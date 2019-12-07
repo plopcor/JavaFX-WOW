@@ -1,11 +1,12 @@
 package model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Localitzacio {
 
 	String nom;
-	String nomFitxerImatge;
+	File fitxerImatge;
 	ArrayList<Nivell> nivells;
 	int indexNivellActual = 0;
 	
@@ -13,21 +14,21 @@ public class Localitzacio {
 	// CONSTRUCTOR
 	public Localitzacio() {
 		this.nom = "Desconegut";
-		this.nomFitxerImatge = "default";
+		this.fitxerImatge = null;
 		this.nivells = new ArrayList<Nivell>();
 		this.indexNivellActual = 0;
 	}
 	
 	public Localitzacio(String nom, ArrayList<Nivell> nivells) {
+		this();
 		this.nom = nom;
-		this.nomFitxerImatge = "default";
 		this.nivells = nivells;
 		this.indexNivellActual = 0;
 	}
 	
-	public Localitzacio(String nom, String imatge, ArrayList<Nivell> nivells) {
+	public Localitzacio(String nom, String nomFitxerImatge, ArrayList<Nivell> nivells) {
 		this(nom, nivells);
-		this.nomFitxerImatge = imatge;
+		this.fitxerImatge = new File("src/imatges/" + nomFitxerImatge);
 	}
 	
 	// GETTERS & SETTERS
@@ -40,12 +41,16 @@ public class Localitzacio {
 		this.nom = nom;
 	}
 	
-	public String getNomFitxerImatge() {
-		return this.nomFitxerImatge;
+	public boolean hasFitxerImatge() {
+		return this.fitxerImatge != null && this.fitxerImatge.exists();
 	}
 	
-	public void setNomFitxerImatge(String nomFitxer) {
-		this.nomFitxerImatge = nomFitxer;
+	public File getFitxerImatge() {
+		return this.fitxerImatge;
+	}
+	
+	public void setFitxerImatge(File fitxerImatge) {
+		this.fitxerImatge = fitxerImatge;
 	}
 	
 	public ArrayList<Nivell> getNivells() {
@@ -77,5 +82,4 @@ public class Localitzacio {
 			return false;
 		}
 	}
-	
 }

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
@@ -40,14 +41,14 @@ public class Dades {
 					
 					// Crear localitzacio amb les dades
 					String nom = (String) jsonObj.get("nombre");
-					String imatge = (String) jsonObj.get("imagen");
+					String nomImatge = (String) jsonObj.get("imagen");
 					ArrayList<Nivell> nivells = getNivells( (JSONArray) jsonObj.get("niveles"));
 					
 					// Si n'hi ha dades (nivells)
 					if(nivells != null) {
-					
+						
 						// Crear localitzacio
-						loc = new Localitzacio(nom, imatge, nivells);
+						loc = new Localitzacio(nom, nomImatge, nivells);
 
 						// Afegir a la llista
 						localitzacions.add(loc);

@@ -3,9 +3,6 @@ package model;
 import java.util.ArrayList;
 
 public class Nivell {
-
-	// ¿¿¿ Fer que numNivell sigui el index de posicio (indexOf) dins de la llista de nivells en la seva Localitzacio ???
-	// - S'haura de modificar "afegirNivell" perque li posi el numNivell automaticament (nivell.setNumNivell(this.nivells.size()))
 	
 	int numNivell;
 	boolean completat;
