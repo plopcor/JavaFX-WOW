@@ -21,7 +21,7 @@
       </Pane>
       <AnchorPane fx:id="panellMain" layoutX="1.0" prefHeight="665.0" prefWidth="558.0">
          <children>
-            <GridPane fx:id="gridLletres" layoutX="76.0" layoutY="443.0" prefHeight="178.0" prefWidth="405.0" AnchorPane.bottomAnchor="43.60000000000002" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0">
+            <GridPane fx:id="gridLletres" layoutX="76.0" layoutY="456.0" prefHeight="178.0" prefWidth="405.0" AnchorPane.bottomAnchor="30.600000000000023" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -73,7 +73,18 @@
                   <Button fx:id="btnValidar" layoutX="419.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnValidarClick" text="Validar" />
                </children>
             </Pane>
-            <Button fx:id="btnPista" layoutX="10.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnPistaClick" text="Pista" />
+            <Button fx:id="btnPista" layoutX="10.0" layoutY="466.0" mnemonicParsing="false" onAction="#btnPistaClick" text="Pista" />
+            <Pane id="panellEncertades" fx:id="panellEncertades" layoutX="14.0" layoutY="179.0" prefHeight="205.0" prefWidth="203.0" visible="false">
+               <children>
+                  <TextArea fx:id="txtEncertadesExtra" layoutX="14.0" layoutY="29.0" prefHeight="162.0" prefWidth="179.0" />
+                  <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paraules extra encertades">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button layoutX="8.0" layoutY="506.0" mnemonicParsing="false" onAction="#btnVeureExtraClick" prefHeight="26.0" prefWidth="54.0" text="Extra" />
          </children>
       </AnchorPane>
       <Pane fx:id="panellFi" prefHeight="665.0" prefWidth="558.0" visible="false">

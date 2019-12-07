@@ -30,7 +30,7 @@ public class Main extends Application {
             Scene scene = new Scene(ventana);
             
             // Posar CSS
-            //scene.getStylesheets().add("application/application.css");
+            scene.getStylesheets().add("application/application.css");
             
             // Configurar finestra
             stage.setTitle("Words of Wonders");

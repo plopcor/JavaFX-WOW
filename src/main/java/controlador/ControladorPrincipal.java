@@ -73,6 +73,13 @@ public class ControladorPrincipal {
 	@FXML
 	private Text lblPunts;
 
+	// => SUBPANELL => PARAULES EXTRA ACERTADES
+	@FXML
+	private Pane panellEncertades;	
+	@FXML
+	private TextArea txtEncertadesExtra;
+
+	
 	// PANELL => NIVELL COMPLETAT
 	@FXML
 	private Text lblNivellCompletat;
@@ -302,6 +309,11 @@ public class ControladorPrincipal {
 		}
 	}
 	
+	@FXML
+	public void btnVeureExtraClick(ActionEvent event) {
+		panellEncertades.setVisible(!panellEncertades.isVisible());
+	}
+	
 	// NIVELL COMPLETAT
 	// => Boto Seguent Nivell
 	@FXML
@@ -350,6 +362,7 @@ public class ControladorPrincipal {
 		actualitzaPuntuacio();
 		
 		System.out.println("Paraula extra => " + paraula);
+		txtEncertadesExtra.appendText(paraula + "\n");
 		
 		// Marcar com a resolta (sobre-escriura el registre del mapa amb el nou valor True ja que utilitza la mateixa clau)
 		paraulesExtra.put(paraula, true);
@@ -556,8 +569,10 @@ public class ControladorPrincipal {
 
 	private void posarParaulesExtra(ArrayList<String> llistaParaulesExtra) {
 		
-		// generarTauler neteja les paraules extra anteriors
-
+		// generarTauler neteja la llista de les paraules extra anteriors
+		// Treure les paraules encertades anteriorment
+		txtEncertadesExtra.setText("");
+		
 		// Guardar paraules a la llista (marcar com no trobades)
 		for (String paraula : llistaParaulesExtra)
 			paraulesExtra.put(paraula, false);
