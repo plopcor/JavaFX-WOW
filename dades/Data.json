@@ -25,6 +25,31 @@
                 }
             ]
             
+        },
+		{
+            "nombre": "Plaza de cibeles",
+            "imagen": "plaza_cibeles.jpg",
+            "niveles": [
+                {
+                    "letras": "ICNIATO",
+                    "palabras": [
+                        "NOTICIA", "TONICA", "ATICO", "CANTO", "CINTA", "TACON", "TACO", "COTA", "ACTO", "CATO", "CITO", "NATO"
+                    ],
+                    "extras": [
+                        "TIO", "TINA", "TAN", "TON", "TIC", "NOTA", "CAN", "CITA", "TOCA", "ANTI", "TIA", "TOA", "ANO", "CAI", "TICA", "TANO", "TINO", "CINTO", "INCA", "TONA", "CON", "CANO", "OCA", "CAO", "NITO", "IONICA", "CATON", "ION", "TINACO", "TICO", "ACION", "INTI", "NACO", "COATI", "COTI", "CIAN", "CINA", "CATION", "ATINO", "NAO", "TAINO", "TINCA", "TONCA", "ACTINIO", "ANITO", "CIANI", "TANICO", "CATINO"
+                    ]
+                },
+                {
+                    "letras": "OOJNSEC",
+                    "palabras": [
+                        "CONSEJO", "CONEJO", "CENSO", "ENOJO", "CONO", "COSO", "ONCE", "SENO", "SECO", "COJO", "SON", "OJO"
+                    ],
+                    "extras": [
+                        "ESO", "NOS", "OSO", "ECO", "NEO", "CON", "OSEO", "SEO", "COSENO", "NEJO", "COJON", "OJEO"
+                    ]
+                }
+            ]
+            
         }
     ]
 }

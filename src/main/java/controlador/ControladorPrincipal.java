@@ -330,6 +330,8 @@ public class ControladorPrincipal {
 	public void btnSeguentNivellClick(ActionEvent event) {
 		panellNivellCompletat.setVisible(false);
 		panellMain.setVisible(true);
+		
+		txtParaula.requestFocus();
 	}
 	
 	// FI DEL JOC
